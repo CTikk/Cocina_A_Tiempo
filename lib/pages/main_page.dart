@@ -39,6 +39,10 @@ class MainPage extends StatelessWidget {
             Image.asset('assets/icons/splash_icon.png', width: 200),
             const SizedBox(height: 20),
             const Text("Bienvenido a Cocina a Tiempo", style: TextStyle(fontSize: 24)),
+            Card(
+              color: Colors.white,
+              margin: const EdgeInsets.only(bottom: 16),
+            ),
           ],
         ),
       ),

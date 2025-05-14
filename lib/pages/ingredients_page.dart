@@ -30,7 +30,7 @@ class IngredientsPage extends StatelessWidget {
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Image.asset('assets/images/splash_icon.png', width: 100),
+                            Image.asset('assets/icons/splash_icon.png', width: 100),
                             const SizedBox(height: 10),
                             Text("Tiempo de cocción: ${ingredient["time"]}"),
                             const SizedBox(height: 10),

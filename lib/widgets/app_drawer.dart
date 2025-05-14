@@ -10,57 +10,83 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: [
-          const UserAccountsDrawerHeader(
-            accountName: Text("Chef Placeholder"),
-            accountEmail: Text("chef@example.com"),
+          // Header del Drawer
+          UserAccountsDrawerHeader(
+            accountName: const Text("Chef Placeholder"),
+            accountEmail: const Text("chef@example.com"),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage("assets/icons/splash_icon.png"),
+              backgroundImage: AssetImage("assets/images/splash_icon.png"),
+              radius: 40,
             ),
-            decoration: BoxDecoration(
-              color: Colors.green,
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 226, 168, 200),
+              image: DecorationImage(
+                image: AssetImage("assets/images/splash_icon.png"),
+                fit: BoxFit.cover,
+              ),
             ),
           ),
+
+          // Enlaces del Drawer
           ListTile(
+            leading: const Icon(Icons.timer, color: Colors.green),
             title: const Text('Timers'),
-            leading: const Icon(Icons.timer),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const TimersPage()),
               );
             },
           ),
           ListTile(
+            leading: const Icon(Icons.person, color: Colors.green),
             title: const Text('Profile'),
-            leading: const Icon(Icons.person),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const ProfilePage()),
               );
             },
           ),
           ListTile(
+            leading: const Icon(Icons.book, color: Colors.green),
             title: const Text('Recipes'),
-            leading: const Icon(Icons.book),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const RecipePage()),
               );
             },
           ),
           ListTile(
+            leading: const Icon(Icons.kitchen, color: Colors.green),
             title: const Text('Ingredients'),
-            leading: const Icon(Icons.kitchen),
             onTap: () {
-              Navigator.push(
+              Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const IngredientsPage()),
               );
+            },
+          ),
+
+          // Separador
+          const Divider(thickness: 1, color: Colors.grey),
+
+          // Configuración y Salir
+          ListTile(
+            leading: const Icon(Icons.settings, color: Colors.grey),
+            title: const Text('Settings'),
+            onTap: () {
+              // Aquí se podría agregar una pantalla de configuración en el futuro
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.exit_to_app, color: Colors.red),
+            title: const Text('Logout'),
+            onTap: () {
+              // Aquí se podría manejar el logout
             },
           ),
         ],
