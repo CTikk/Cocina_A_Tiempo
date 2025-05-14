@@ -10,6 +10,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: Colors.white,
       child: Column(
         children: [
           // Header del Drawer
@@ -17,13 +18,13 @@ class AppDrawer extends StatelessWidget {
             accountName: const Text("Chef Placeholder"),
             accountEmail: const Text("chef@example.com"),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage("assets/images/splash_icon.png"),
+              backgroundImage: AssetImage("assets/icons/splash_icon.png"),
               radius: 40,
             ),
             decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 226, 168, 200),
+              color: Color.fromARGB(255, 65, 57, 62),
               image: DecorationImage(
-                image: AssetImage("assets/images/splash_icon.png"),
+                image: AssetImage("assets/icons/splash_icon.png"),
                 fit: BoxFit.cover,
               ),
             ),
@@ -31,7 +32,7 @@ class AppDrawer extends StatelessWidget {
 
           // Enlaces del Drawer
           ListTile(
-            leading: const Icon(Icons.timer, color: Colors.green),
+            leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98)),
             title: const Text('Timers'),
             onTap: () {
               Navigator.pushReplacement(
@@ -41,7 +42,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.person, color: Colors.green),
+            leading: const Icon(Icons.person, color: Color.fromARGB(255, 142, 65, 98)),
             title: const Text('Profile'),
             onTap: () {
               Navigator.pushReplacement(
@@ -51,7 +52,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.book, color: Colors.green),
+            leading: const Icon(Icons.book, color: Color.fromARGB(255, 142, 65, 98)),
             title: const Text('Recipes'),
             onTap: () {
               Navigator.pushReplacement(
@@ -61,7 +62,7 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.kitchen, color: Colors.green),
+            leading: const Icon(Icons.kitchen, color: Color.fromARGB(255, 142, 65, 98)),
             title: const Text('Ingredients'),
             onTap: () {
               Navigator.pushReplacement(

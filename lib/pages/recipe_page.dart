@@ -37,8 +37,8 @@ class RecipePage extends StatelessWidget {
         onPressed: () {
           // Aquí se podría abrir la pantalla para crear una nueva receta
         },
-        backgroundColor: Colors.green,
-        child: const Icon(Icons.add),
+        backgroundColor: Color.fromARGB(255, 142, 65, 98),
+        child: const Icon(Icons.add, color: Colors.white,),
       ),
     );
   }

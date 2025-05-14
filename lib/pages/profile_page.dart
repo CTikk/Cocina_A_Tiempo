@@ -37,7 +37,7 @@ class ProfilePage extends StatelessWidget {
             // Información adicional
             const Divider(),
             ListTile(
-              leading: const Icon(Icons.restaurant_menu, color: Colors.green),
+              leading: const Icon(Icons.restaurant_menu, color: Color.fromARGB(255, 142, 65, 98)),
               title: const Text("Recetas creadas"),
               trailing: const Text("5"),
               onTap: () {
@@ -45,7 +45,7 @@ class ProfilePage extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.timer, color: Colors.green),
+              leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98)),
               title: const Text("Temporizadores activos"),
               trailing: const Text("2"),
               onTap: () {
@@ -70,7 +70,7 @@ class ProfilePage extends StatelessWidget {
               icon: const Icon(Icons.edit),
               label: const Text("Editar Perfil"),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: Color.fromARGB(255, 142, 65, 98),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

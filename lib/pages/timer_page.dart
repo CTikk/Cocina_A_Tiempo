@@ -17,14 +17,14 @@ class TimersPage extends StatelessWidget {
             elevation: 4,
             margin: const EdgeInsets.only(bottom: 16),
             child: ListTile(
-              leading: const Icon(Icons.timer, color: Colors.green, size: 40),
+              leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98), size: 40),
               title: const Text("Carne de Res - Horneado"),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text("Tiempo restante: 25:30"),
                   SizedBox(height: 4),
-                  LinearProgressIndicator(value: 0.3, color: Colors.green),
+                  LinearProgressIndicator(value: 0.3, color: Color.fromARGB(255, 142, 65, 98)),
                 ],
               ),
               trailing: IconButton(
@@ -41,14 +41,14 @@ class TimersPage extends StatelessWidget {
             elevation: 4,
             margin: const EdgeInsets.only(bottom: 16),
             child: ListTile(
-              leading: const Icon(Icons.timer, color: Colors.green, size: 40),
+              leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98), size: 40),
               title: const Text("Pasta - Hervida"),
               subtitle: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
                   Text("Tiempo restante: 8:20"),
                   SizedBox(height: 4),
-                  LinearProgressIndicator(value: 0.8, color: Colors.green),
+                  LinearProgressIndicator(value: 0.8, color: Color.fromARGB(255, 142, 65, 98)),
                 ],
               ),
               trailing: IconButton(
@@ -66,9 +66,9 @@ class TimersPage extends StatelessWidget {
               // Aquí se podría abrir la pantalla para agregar un nuevo temporizador
             },
             icon: const Icon(Icons.add),
-            label: const Text("Agregar Temporizador"),
+            label: const Text("Agregar Temporizador", ),
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.green,
+              backgroundColor: Color.fromARGB(255, 142, 65, 98),
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(8),
