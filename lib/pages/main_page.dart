@@ -1,108 +1,44 @@
 import 'package:flutter/material.dart';
-import 'profile_page.dart';
+import '../widgets/app_drawer.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  static const appTitle = 'Main Page';
-
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: appTitle,
-      home: MainPage(title: appTitle),
+    return MaterialApp(
+      title: 'CookMate',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+        textTheme: GoogleFonts.poppinsTextTheme(),
+      ),
+      home: const MainPage(),
     );
   }
 }
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  int _selectedIndex = 0;
-  static const TextStyle optionStyle = TextStyle(
-    fontSize: 30,
-    fontWeight: FontWeight.bold,
-  );
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text('Index 0: Home', style: optionStyle),
-    Text('Index 1: Business', style: optionStyle),
-    Text('Index 2: School', style: optionStyle),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
-        leading: Builder(
-          builder: (context) {
-            return IconButton(
-              icon: const Icon(Icons.menu),
-              onPressed: () {
-                Scaffold.of(context).openDrawer();
-              },
-            );
-          },
-        ),
+        title: const Text('Cocina a Tiempo'),
+        centerTitle: true,
       ),
-      body: Center(child: _widgetOptions[_selectedIndex]),
-      drawer: Drawer(
-        child: ListView(
-          // Important: Remove any padding from the ListView.
-          padding: EdgeInsets.zero,
+      drawer: const AppDrawer(),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.blue),
-              child: Text('Drawer Header'),
-            ),
-            ListTile(
-              title: const Text('Home'),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('Profile'),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                // Update the state of the app
-                Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const ProfilePage(title: 'Profile Page',)),
-              );
-                // Then close the drawer
-                // Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: const Text('School'),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
-              },
-            ),
+            Image.asset('assets/icons/splash_icon.png', width: 200),
+            const SizedBox(height: 20),
+            const Text("Bienvenido a Cocina a Tiempo", style: TextStyle(fontSize: 24)),
           ],
         ),
       ),
