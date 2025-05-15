@@ -66,6 +66,17 @@ flutter:
   assets:
     - assets/icons/splash_icon.png
     - assets/images/splash_background.jpg
+    - assets/images/food_burguer.png
+    - assets/images/food_chicken.png
+    - assets/images/food_eggs.png
+    - assets/images/food_meat.png
+    - assets/images/food_pasta.png
+    - assets/images/food_pizza.png
+    - assets/images/food_ramen.png
+    - assets/images/food_rice.png
+    - assets/images/food_salad.png
+    - assets/images/supplies_oven.png
+    - assets/images/supplies_pot.png
 
 flutter_native_splash:
   color: "#4A148C"

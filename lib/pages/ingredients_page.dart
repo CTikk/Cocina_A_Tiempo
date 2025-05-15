@@ -15,12 +15,18 @@ class IngredientsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           final ingredient = ingredients[index];
           return Card(
+            elevation: 4,
             margin: const EdgeInsets.only(bottom: 16),
             child: ListTile(
+              leading: Image.asset(
+                'assets/images/${ingredient["image"]}',
+                width: 60,
+                height: 60,
+              ),
               title: Text(ingredient["name"]),
               subtitle: Text("Tiempo de cocción: ${ingredient["time"]}"),
               trailing: IconButton(
-                icon: const Icon(Icons.info),
+                icon: const Icon(Icons.info, color: Color.fromARGB(255, 142, 65, 98)),
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -30,7 +36,7 @@ class IngredientsPage extends StatelessWidget {
                         content: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Image.asset('assets/icons/splash_icon.png', width: 100),
+                            Image.asset('assets/images/${ingredient["image"]}', width: 100),
                             const SizedBox(height: 10),
                             Text("Tiempo de cocción: ${ingredient["time"]}"),
                             const SizedBox(height: 10),
@@ -72,21 +78,25 @@ final List<Map<String, dynamic>> ingredients = [
   {
     "name": "Carne de res",
     "time": "30 min",
-    "types": ["A la parrilla", "Horneado", "Frito", "Estofado"]
+    "image": "food_meat.png",
+    "types": ["A la parrilla", "Horneado", "Frito", "Estofado"],
   },
   {
-    "name": "Papas",
+    "name": "Huevos",
     "time": "20 min",
-    "types": ["Hervidas", "Fritas", "Asadas"]
+    "image": "food_eggs.png",
+    "types": ["Hervidos", "Fritos", "Revueltos"],
   },
   {
     "name": "Pollo",
     "time": "25 min",
-    "types": ["Horneado", "Frito", "A la parrilla", "Asado"]
+    "image": "food_chicken.png",
+    "types": ["Horneado", "Frito", "A la parrilla", "Asado"],
   },
   {
     "name": "Pasta",
     "time": "10 min",
-    "types": ["Hervida", "Salteada", "Horneada"]
+    "image": "food_pasta.png",
+    "types": ["Hervida", "Salteada", "Horneada"],
   },
 ];

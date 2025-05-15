@@ -19,13 +19,13 @@ class RecipePage extends StatelessWidget {
             margin: const EdgeInsets.only(bottom: 16),
             child: ListTile(
               leading: Image.asset(
-                'assets/icons/splash_icon.png',
+                'assets/images/${recipe["image"]}',
                 width: 60,
                 height: 60,
               ),
               title: Text(recipe["name"]),
               subtitle: Text("Tiempo estimado: ${recipe["time"]}"),
-              trailing: const Icon(Icons.arrow_forward, color: Colors.grey),
+              trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
               onTap: () {
                 // Aquí se podría abrir la receta para ver los detalles
               },
@@ -38,7 +38,7 @@ class RecipePage extends StatelessWidget {
           // Aquí se podría abrir la pantalla para crear una nueva receta
         },
         backgroundColor: Color.fromARGB(255, 142, 65, 98),
-        child: const Icon(Icons.add, color: Colors.white,),
+        child: const Icon(Icons.add),
       ),
     );
   }
@@ -46,28 +46,33 @@ class RecipePage extends StatelessWidget {
 
 final List<Map<String, dynamic>> recipes = [
   {
-    "name": "Spaghetti Carbonara",
+    "name": "Shoyu Ramen",
     "time": "20 min",
-    "ingredients": ["Pasta", "Huevos", "Queso", "Pimienta", "Panceta"],
+    "image": "food_ramen.png",
+    "ingredients": ["Fideos", "Huevos", "Soya", "Pimienta", "Panceta"],
   },
   {
     "name": "Ensalada César",
     "time": "15 min",
+    "image": "food_salad.png",
     "ingredients": ["Lechuga", "Pollo", "Queso", "Crutones", "Aderezo César"],
   },
   {
-    "name": "Tacos de Carne",
+    "name": "Arroz Primavera",
     "time": "25 min",
-    "ingredients": ["Carne", "Tortillas", "Cebolla", "Cilantro", "Salsa"],
+    "image": "food_rice.png",
+    "ingredients": ["Arroz", "Choclo", "Cebolla", "Zanahoria", "Pimentón"],
   },
   {
     "name": "Pizza Margherita",
-    "time": "30 min",
+    "time": "50 min",
+    "image": "food_pizza.png",
     "ingredients": ["Masa", "Tomate", "Mozzarella", "Albahaca"],
   },
   {
     "name": "Hamburguesa Clásica",
     "time": "20 min",
+    "image": "food_burguer.png",
     "ingredients": ["Pan", "Carne", "Lechuga", "Tomate", "Queso", "Cebolla"],
   },
 ];
