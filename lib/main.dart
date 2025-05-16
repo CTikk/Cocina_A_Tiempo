@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'pages/splash_screen.dart';
+import 'pages/main_page.dart';
+import 'pages/timer_page.dart';
+import 'pages/profile_page.dart';
+import 'pages/recipe_page.dart';
+import 'pages/ingredients_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +16,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'App Race',
+      title: 'CookMate',
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      initialRoute: '/splash',
+      routes: {
+        '/splash': (context) => const SplashScreen(),
+        '/': (context) => const MainPage(),
+        '/timers': (context) => const TimersPage(),
+        '/recipes': (context) => const RecipePage(),
+        '/ingredients': (context) => const IngredientsPage(),
+        '/profile': (context) => const ProfilePage(),
+      },
     );
   }
 }

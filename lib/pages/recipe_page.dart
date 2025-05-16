@@ -7,7 +7,7 @@ class RecipePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Recipes")),
+      appBar: AppBar(title: const Text("Recetas")),
       drawer: const AppDrawer(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

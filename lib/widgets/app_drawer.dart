@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/main_page.dart';
 import '../pages/profile_page.dart';
 import '../pages/recipe_page.dart';
 import '../pages/ingredients_page.dart';
@@ -18,13 +19,14 @@ class AppDrawer extends StatelessWidget {
             accountName: const Text("Chef Placeholder"),
             accountEmail: const Text("chef@example.com"),
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage("assets/icons/splash_icon.png"),
+              backgroundImage: AssetImage("assets/images/user_profile.jpg"),
               radius: 40,
             ),
             decoration: const BoxDecoration(
               color: Color.fromARGB(255, 65, 57, 62),
               image: DecorationImage(
-                image: AssetImage("assets/icons/splash_icon.png"),
+                image: AssetImage("assets/images/user_profile.jpg"),
+                opacity: 0.5,
                 fit: BoxFit.cover,
               ),
             ),
@@ -32,8 +34,18 @@ class AppDrawer extends StatelessWidget {
 
           // Enlaces del Drawer
           ListTile(
+            leading: const Icon(Icons.home, color: Color.fromARGB(255, 142, 65, 98)),
+            title: const Text('Home'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const MainPage()),
+              );
+            },
+          ),
+          ListTile(
             leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98)),
-            title: const Text('Timers'),
+            title: const Text('Temporizadores'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -42,18 +54,8 @@ class AppDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.person, color: Color.fromARGB(255, 142, 65, 98)),
-            title: const Text('Profile'),
-            onTap: () {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(builder: (context) => const ProfilePage()),
-              );
-            },
-          ),
-          ListTile(
             leading: const Icon(Icons.book, color: Color.fromARGB(255, 142, 65, 98)),
-            title: const Text('Recipes'),
+            title: const Text('Recetas'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
@@ -63,11 +65,21 @@ class AppDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(Icons.kitchen, color: Color.fromARGB(255, 142, 65, 98)),
-            title: const Text('Ingredients'),
+            title: const Text('Ingredientes'),
             onTap: () {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (context) => const IngredientsPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person, color: Color.fromARGB(255, 142, 65, 98)),
+            title: const Text('Perfil'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const ProfilePage()),
               );
             },
           ),
@@ -78,14 +90,14 @@ class AppDrawer extends StatelessWidget {
           // Configuración y Salir
           ListTile(
             leading: const Icon(Icons.settings, color: Colors.grey),
-            title: const Text('Settings'),
+            title: const Text('Configuración'),
             onTap: () {
               // Aquí se podría agregar una pantalla de configuración en el futuro
             },
           ),
           ListTile(
             leading: const Icon(Icons.exit_to_app, color: Colors.red),
-            title: const Text('Logout'),
+            title: const Text('Cerrar sesión'),
             onTap: () {
               // Aquí se podría manejar el logout
             },

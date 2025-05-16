@@ -77,6 +77,7 @@ flutter:
     - assets/images/food_salad.png
     - assets/images/supplies_oven.png
     - assets/images/supplies_pot.png
+    - assets/images/user_profile.jpg
 
 flutter_native_splash:
   color: "#4A148C"

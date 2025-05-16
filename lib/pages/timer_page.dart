@@ -7,7 +7,7 @@ class TimersPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Timers")),
+      appBar: AppBar(title: const Text("Temporizadores")),
       drawer: const AppDrawer(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),

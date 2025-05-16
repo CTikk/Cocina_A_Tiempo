@@ -7,7 +7,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Profile")),
+      appBar: AppBar(title: const Text("Perfil")),
       drawer: const AppDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -17,8 +17,8 @@ class ProfilePage extends StatelessWidget {
             // Imagen de perfil
             CircleAvatar(
               radius: 80,
-              backgroundImage: const AssetImage("assets/images/splash_icon.png"),
-              backgroundColor: Colors.grey.shade200,
+              backgroundImage: const AssetImage("assets/images/user_profile.jpg"),
+              // backgroundColor: Colors.grey.shade200,
             ),
             const SizedBox(height: 20),
 

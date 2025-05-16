@@ -7,7 +7,7 @@ class IngredientsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Ingredients")),
+      appBar: AppBar(title: const Text("Ingredientes")),
       drawer: const AppDrawer(),
       body: ListView.builder(
         padding: const EdgeInsets.all(16),
