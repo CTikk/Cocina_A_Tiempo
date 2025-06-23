@@ -1,102 +1,132 @@
 import 'package:flutter/material.dart';
 import '../widgets/app_drawer.dart';
+import '../database/db_helper.dart';
+import '../database/ingredient_model.dart';
+import 'add_timer_page.dart';
 
-class IngredientsPage extends StatelessWidget {
+class IngredientsPage extends StatefulWidget {
   const IngredientsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: const Text("Ingredientes")),
-      drawer: const AppDrawer(),
-      body: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: ingredients.length,
-        itemBuilder: (context, index) {
-          final ingredient = ingredients[index];
-          return Card(
-            elevation: 4,
-            margin: const EdgeInsets.only(bottom: 16),
-            child: ListTile(
-              leading: Image.asset(
-                'assets/images/${ingredient["image"]}',
-                width: 60,
-                height: 60,
-              ),
-              title: Text(ingredient["name"]),
-              subtitle: Text("Tiempo de cocción: ${ingredient["time"]}"),
-              trailing: IconButton(
-                icon: const Icon(Icons.info, color: Color.fromARGB(255, 142, 65, 98)),
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return AlertDialog(
-                        title: Text(ingredient["name"]),
-                        content: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Image.asset('assets/images/${ingredient["image"]}', width: 100),
-                            const SizedBox(height: 10),
-                            Text("Tiempo de cocción: ${ingredient["time"]}"),
-                            const SizedBox(height: 10),
-                            Text("Tipos de cocción:"),
-                            const SizedBox(height: 5),
-                            for (var type in ingredient["types"]) Text("- $type"),
-                            const SizedBox(height: 20),
-                            ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                                // Aquí se agregaría a la lista de temporizadores
-                              },
-                              child: const Text("Agregar"),
-                            )
-                          ],
-                        ),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text("Cerrar"),
-                          ),
-                        ],
-                      );
-                    },
-                  );
-                },
-              ),
-            ),
-          );
-        },
-      ),
+  State<IngredientsPage> createState() => _IngredientsPageState();
+}
+
+class _IngredientsPageState extends State<IngredientsPage> {
+  final DBHelper _dbHelper = DBHelper();
+  List<Ingredient> _ingredients = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadIngredients();
+  }
+
+  Future<void> _loadIngredients() async {
+  try {
+    await _dbHelper.insertDefaultIngredients();
+    final data = await _dbHelper.getIngredients();
+    setState(() {
+      _ingredients = data;
+    });
+  } catch (e) {
+    debugPrint("Error al cargar ingredientes: $e");
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Error al cargar ingredientes: $e")),
     );
   }
 }
 
-final List<Map<String, dynamic>> ingredients = [
-  {
-    "name": "Carne de res",
-    "time": "30 min",
-    "image": "food_meat.png",
-    "types": ["A la parrilla", "Horneado", "Frito", "Estofado"],
-  },
-  {
-    "name": "Huevos",
-    "time": "20 min",
-    "image": "food_eggs.png",
-    "types": ["Hervidos", "Fritos", "Revueltos"],
-  },
-  {
-    "name": "Pollo",
-    "time": "25 min",
-    "image": "food_chicken.png",
-    "types": ["Horneado", "Frito", "A la parrilla", "Asado"],
-  },
-  {
-    "name": "Pasta",
-    "time": "10 min",
-    "image": "food_pasta.png",
-    "types": ["Hervida", "Salteada", "Horneada"],
-  },
-];
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Scaffold(
+      appBar: AppBar(title: const Text("Ingredientes")),
+      drawer: const AppDrawer(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              padding: const EdgeInsets.all(16),
+              itemCount: _ingredients.length,
+              itemBuilder: (context, index) {
+                final ingredient = _ingredients[index];
+                return Card(
+                  margin: const EdgeInsets.only(bottom: 16),
+                  child: ListTile(
+                    /*leading: Image.asset(
+                      'assets/images/${ingredient.image}',
+                      width: 60,
+                      height: 60,
+                      fit: BoxFit.cover,
+                    ),*/
+                    title: Text(ingredient.name, style: textTheme.titleMedium),
+                    subtitle: Text("Tiempo: ${ingredient.time}", style: textTheme.bodyMedium),
+                    trailing: IconButton(
+                      icon: const Icon(Icons.delete, color: Colors.red),
+                      onPressed: () async {
+                        await _dbHelper.deleteIngredient(ingredient.id!);
+                        _loadIngredients();
+                      },
+                    ),
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                          title: Text(ingredient.name, style: textTheme.titleLarge),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Tiempo de cocción: ${ingredient.time}", style: textTheme.bodyMedium),
+                              const SizedBox(height: 10),
+                              Text("Tipos de cocción:", style: textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.bold)),
+                              for (var type in ingredient.types)
+                                Text("- $type", style: textTheme.bodyMedium),
+                            ],
+                          ),
+                          actions: [
+                            TextButton(
+                              onPressed: () => Navigator.pop(context),
+                              child: const Text("Cerrar"),
+                            ),
+                            ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AddTimerPage(
+                                      ingredientName: ingredient.name,
+                                      cookingTime: ingredient.time,
+                                    ),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(Icons.timer),
+                              label: const Text("Agregar temporizador"),
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: ElevatedButton.icon(
+              onPressed: () {
+                Navigator.pushNamed(context, '/add-ingredient');
+              },
+              icon: const Icon(Icons.add),
+              label: const Text("Agregar nuevo ingrediente"),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}

@@ -6,6 +6,8 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Perfil")),
       drawer: const AppDrawer(),
@@ -15,22 +17,21 @@ class ProfilePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Imagen de perfil
-            CircleAvatar(
+            const CircleAvatar(
               radius: 80,
-              backgroundImage: const AssetImage("assets/images/user_profile.jpg"),
-              // backgroundColor: Colors.grey.shade200,
+              backgroundImage: AssetImage("assets/images/user_profile.jpg"),
             ),
             const SizedBox(height: 20),
 
             // Información del usuario
-            const Text(
+            Text(
               "Chef Placeholder",
-              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+              style: textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 10),
-            const Text(
+            Text(
               "chef@example.com",
-              style: TextStyle(fontSize: 18, color: Colors.grey),
+              style: textTheme.bodyMedium?.copyWith(color: Colors.grey),
             ),
             const SizedBox(height: 20),
 
@@ -38,39 +39,31 @@ class ProfilePage extends StatelessWidget {
             const Divider(),
             ListTile(
               leading: const Icon(Icons.restaurant_menu, color: Color.fromARGB(255, 142, 65, 98)),
-              title: const Text("Recetas creadas"),
-              trailing: const Text("5"),
-              onTap: () {
-                // Aquí se podría navegar a una lista de recetas creadas
-              },
+              title: Text("Recetas creadas", style: textTheme.bodyLarge),
+              trailing: Text("5", style: textTheme.bodyMedium),
+              onTap: () {},
             ),
             ListTile(
               leading: const Icon(Icons.timer, color: Color.fromARGB(255, 142, 65, 98)),
-              title: const Text("Temporizadores activos"),
-              trailing: const Text("2"),
-              onTap: () {
-                // Aquí se podría navegar a los temporizadores activos
-              },
+              title: Text("Temporizadores activos", style: textTheme.bodyLarge),
+              trailing: Text("2", style: textTheme.bodyMedium),
+              onTap: () {},
             ),
             ListTile(
               leading: const Icon(Icons.favorite, color: Colors.red),
-              title: const Text("Recetas favoritas"),
-              trailing: const Text("3"),
-              onTap: () {
-                // Aquí se podría navegar a las recetas favoritas
-              },
+              title: Text("Recetas favoritas", style: textTheme.bodyLarge),
+              trailing: Text("3", style: textTheme.bodyMedium),
+              onTap: () {},
             ),
             const Divider(),
 
             // Botón para editar perfil
             ElevatedButton.icon(
-              onPressed: () {
-                // Aquí se podría abrir la pantalla para editar perfil
-              },
+              onPressed: () {},
               icon: const Icon(Icons.edit),
               label: const Text("Editar Perfil"),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color.fromARGB(255, 142, 65, 98),
+                backgroundColor: const Color.fromARGB(255, 142, 65, 98),
                 padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8),

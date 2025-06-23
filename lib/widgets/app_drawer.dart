@@ -4,6 +4,8 @@ import '../pages/profile_page.dart';
 import '../pages/recipe_page.dart';
 import '../pages/ingredients_page.dart';
 import '../pages/timer_page.dart';
+import '../pages/preferences_page.dart';
+import '../pages/about_page.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -90,9 +92,12 @@ class AppDrawer extends StatelessWidget {
           // Configuración y Salir
           ListTile(
             leading: const Icon(Icons.settings, color: Colors.grey),
-            title: const Text('Configuración'),
+            title: const Text('Preferencias'),
             onTap: () {
-              // Aquí se podría agregar una pantalla de configuración en el futuro
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const PreferencesPage()),
+              );
             },
           ),
           ListTile(
@@ -100,6 +105,23 @@ class AppDrawer extends StatelessWidget {
             title: const Text('Cerrar sesión'),
             onTap: () {
               // Aquí se podría manejar el logout
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.info_outline, color: Colors.grey),
+            title: const Text('Acerca de'),
+            onTap: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const AboutPage()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.feedback),
+            title: const Text('Tu Opinión'),
+            onTap: () {
+              Navigator.pushReplacementNamed(context, '/feedback');
             },
           ),
         ],

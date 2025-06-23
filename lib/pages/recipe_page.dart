@@ -6,6 +6,8 @@ class RecipePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       appBar: AppBar(title: const Text("Recetas")),
       drawer: const AppDrawer(),
@@ -23,8 +25,14 @@ class RecipePage extends StatelessWidget {
                 width: 60,
                 height: 60,
               ),
-              title: Text(recipe["name"]),
-              subtitle: Text("Tiempo estimado: ${recipe["time"]}"),
+              title: Text(
+                recipe["name"],
+                style: textTheme.titleMedium,
+              ),
+              subtitle: Text(
+                "Tiempo estimado: ${recipe["time"]}",
+                style: textTheme.bodyMedium,
+              ),
               trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey),
               onTap: () {
                 // Aquí se podría abrir la receta para ver los detalles
@@ -37,7 +45,7 @@ class RecipePage extends StatelessWidget {
         onPressed: () {
           // Aquí se podría abrir la pantalla para crear una nueva receta
         },
-        backgroundColor: Color.fromARGB(255, 142, 65, 98),
+        backgroundColor: const Color.fromARGB(255, 142, 65, 98),
         child: const Icon(Icons.add),
       ),
     );
