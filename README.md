@@ -40,7 +40,7 @@ Cocina a Tiempo es una aplicación móvil diseñada para facilitar la preparaci�
 - **README.md**: Archivo de documentación del proyecto.
 
 ## Diagrama de clases
-![Diagrama](https://drive.google.com/file/d/1RSONdG0V_OCtlroQR_jQ-wnltirTIOce/view?usp=sharing)
+https://drive.google.com/file/d/1RSONdG0V_OCtlroQR_jQ-wnltirTIOce/view?usp=sharing
 
 ## Tecnologías Utilizadas
 - Flutter : Framework de trabajo
